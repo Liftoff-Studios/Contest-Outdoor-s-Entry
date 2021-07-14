@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<!--
+
+I have been programming for 20 months (approx.) 
+
+I have completed 100% of Intro To Webpages.
+
+I would like to be placed in the [Beginner] Bracket. 
+
+
+
+
+Judges please read the detailed description given in the next comment
+-->
+<!--
+Things the Judges should see :)
+    1. Responsive design:
+        add ?width=750&height=500
+        add ?width=400
+        anything else is also fine :)
+    2. Check out the SVG Cycle, taken from a reference image but made and animated myself :)
+    3. Quiz section, tinker with the right and wrong answers !
+    4. User Experience Section, Make a T&T post in the thread yourself :P
+    5. Check out the races and cyclist panes
+    6. Commenting for most CSS and HTML Properties
+    7. The chatbot 
+-->
+<!--
+RoadMap:-
+    Idea <= ~
+    Reality <= @
+    WIP <= *
+    Unsure <= &
+    
+    Responsive Design (@)
+    Quiz (*)
+    Cyclist (@)
+    Spin a web story (~)
+    User Experience (@)
+    SVG Animation (@)
+    Dark-Mode (*)
+    Page-Transition (@)
+
+-->
+
+<!-- 
+                        About the Author 
+I am a 14 year old trying to make better webpages everyday.
+I am currently working on my coding skills on FCC and KA
+Thank you to all the KA Community by helping me with the feedback !
+
+Here's what I learnt while making an entry for this contest:
+
+    > Animating SVG's
+
+Here's what I tried for the first time while making an entry for this contest:
+
+    > Chatbot
+    > Animation duration while hover-out
+    > Slider
+    > Responsive Design
+    > Font-Awesome Icon Toolkit
+    > Parallax Effect
+    > No-Script Tag
+    
+If you like this program and want to notified when I release a new webpage, sub here => https://www.khanacademy.org/computer-programming/my-subpage/5975724581928960
+
+-->
+<html>
+    <head>
+        <!--Meta Tags-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Contest Entry Webpage</title>
+        
+        <!--Font-Awesome-->
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+       
+       
+        <!--Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+        
+        
+        <!--Material Icons-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      
+      
+        <!--Acme Font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+        
+        
+        <!--Chatbot Styles-->
+        <style>
+           .chatbot{
+               font-size:32px;
+               padding:7px;
+               padding-left:18px;
+               padding-right:18px;
+               border-radius:50%;
+               cursor:pointer;
+               transition-duration:0.3s;
+               position:fixed;
+               top:90%;
+               left:90%;
+               z-index:0;
+               background-color:coral;
+               transform:scale(0.7);
+               
+           }
+           .chatbot:hover{
+               box-shadow:0px 0px 4px 1px grey;
+               transform:scale(0.8);
+               transition-duration:0.3s;
+           }
+           
+           #chatbot-interface{
+               width:112px;
+               overflow-x:hidden;
+               overflow-y:scroll;
+               height:131px;
+               padding:5px;
+               border:2px black solid;
+               border-radius:4px;
+               background-color:white;
+               width:265px;
+               height:295px;
+               box-shadow:0px 0px 10px 3px rgb(186, 182, 186);
+           }
+           #holder1{
+               margin:-10px;
+               position:fixed;
+               top:50%;
+               left:0%;
+               display:flex;
+               justify-content:flex-end;
+               padding-right:21px;
+               width:100%;
+           }
+           .bot-img{
+               background-color:rgb(255, 0, 170);
+               color:white;
+               padding:5px;
+               width:35px;
+               height:35px;
+               border-radius:50%;
+               display:grid;
+               justify-content:center;
+               align-items:center;
+               border:1px black solid;
+               font-weight:bold;
+           }
+           .grid{
+               display:grid;
+               grid-template-columns:2fr 5fr;
+               grid-gap:5px;
+               font-family: 'Acme', sans-serif;
+               font-size:13px;
+               align-items:center;
+           }
+           .verified{
+               background-color:red;
+               color:white;
+               padding:1px 13px 1px 13px;
+               border-radius:8px;
+               font-family: 'Roboto Condensed', sans-serif;/*Sets the font-family*/
+           }
+       </style>
+       
+       
+        <!--Styles for SVG Animation-->
+        <style>
+            svg{
+                width:70%;
+            }
+            .rotate{
+                transform-origin: center;
+                transform-box: fill-box;
+                animation-name:move;
+                animation-duration:2s;
+                animation-iteration-count: infinite;
+                animation-timing-function:linear;
+            }
+            @keyframes move{
+                from{
+                    transform:rotate(0deg);
+                }
+                to{
+                    transform:rotate(360deg);
+                }
+            }
+        </style>
+        
+        
+        <!--General-->
+        <style>
+            /*Setting Scroll Behaviour*/
+            html{
+                scroll-behaviour:smooth;/*Changes Scroll Behaviour idk why it isnt working*/
+            }
+            
+            /*Style for body*/
+            body{
+                font-family: 'Roboto Condensed', sans-serif;/*Sets the font-family*/
+                margin:0px;/*Sets the margin of body to 0*/
+                padding-left:60px;/*Padding(because nav's position is fixed)*/
+            }
+            
+            /*Style for scrollbar*/
+            ::-webkit-scrollbar{
+                width:5px;/*Sets Scrollbar width*/
+            }
+            ::-webkit-scrollbar-thumb{
+                width:5px;/*Sets the width of the coloured part*/
+                background:linear-gradient(rgb(221, 0, 255),rgb(255, 0, 187));/*Sets the background-color of the thumb in the scrollbar*/
+            }
+            
+            /*Header Style*/
+            h1{
+                font-family:'Source Sans Pro', sans-serif;/*Sets the font-family*/
+            }
+            
+            /*Styles for the navbar icons*/
+            nav .material-icons{
+                font-size:30px;/*Sets a text size (For the icons in this case)*/
+                padding:10px;/*Adds a padding to the nav*/
+                cursor:pointer;/*Changes the type of cursor (I find this awesome :P )*/
+            }
+            
+            /*General Navbar Styles(flexbox etc)*/
+            nav{
+                display:flex;/*Makes it a flexbox*/
+                position:fixed;/*Makes its position fixed, i.e it wont change until you tell it to do so*/
+                left:0px;/*Sets its 'left' end position*/
+                flex-direction:column;/*Sets the direction of the children of the flexbox*/
+                justify-content: flex-start; /*Makes the icons go to the top end of the nav(except the stting icon) */
+                align-items:center;/*Aligns them to the center*/
+                height:100vh;/*Sets the height to the height of the browser (Makes it responsive) */
+                float:left; /*Just in case*/
+                background-color:rgb(255, 0, 123);/*Sets the background colour of the navigation bar*/
+                color:white;/*Sets the colour of the icons*/
+                width:60px;/*Sets its width, it will change for mobiles (see @media queries for more info)*/
+                overflow:hidden;/*If any icon crosses the width, it will get hidden*/
+                top:0px;/*Sets the top property*/
+                padding-top:0px;/*Sets the padding for the top part*/
+                z-index:5;/*This makes it visible over the transition page (try changing it to -1 to see what i mean :P)*/
+            }
+            
+            /*Settings button alignment*/
+            #set{
+                position:absolute;/*This sets the position of the setting icon as absolute*/
+                top:90%;/*Top property of the absolutely positioned element*/
+            }
+            
+            /*Sets some padding for the text*/
+            .text{
+                padding:10px;/*This makes it look much better :) */
+            }
+            
+            /*To create a parallax effect*/
+            .text1{
+                padding:10px;/*Meeting you again o'l paddin XD*/
+                background-color:white;/*Sets the background colour of text*/
+                transform:translate(0,350px);/*This wont stop the page from being responsive, rather it will make it look a little different in different devices depending on the size of the hero image */
+            }
+            
+            /*Aligns headings to the center*/
+            .title{
+                text-align:center;/*Aligns the text to the center*/
+            }
+            
+            /*Sets the smaller text in the title*/
+            .title small{
+                font-size:15px;/*sets the text size*/
+                color:grey;/*Sets the colour of the text to grey*/
+            }
+            
+            /*Empty (May change later)*/
+            img{
+                
+            }
+            
+            /*Hero Image*/
+            #imgo{
+                width:100%;/*To make it responsive*/
+                margin:0px;/*Makes it look better lol*/
+                position:fixed;/*This is important*/
+                z-index:-1;/*Again important*/
+            }
+            
+            
+            @media (max-width:500px){
+                body{
+                    padding-left:0px;
+                    padding-top:60px;
+                }
+                nav{
+                    flex-direction:row;
+                    height:60px;
+                    width:100%;
+                }
+                #set{
+                    position:absolute;
+                    top:7px;
+                    left:85%;
+                }
+                nav .material-icons{
+                    font-size:25px;
+                }
+                .text1{
+                    transform:translate(0,220px);
+                }
+                .race-pane{
+                    overflow-y:scroll;
+                }
+                .changer svg{
+                    width:100% !IMPORTANT;
+                }
+            }
+            
+            
+            /*What was this for XDXD*/
+            .down-under{
+                position:relative;/*Makes the position relative*/
+                top:-100px;/*Sets it relative position to 100px above its original position*/
+            }
+            
+            /*For the quote at homepage*/
+            .quote{
+                border:1px black solid;/*Creates a border around the text*/
+                padding:30px;/*Padding for the text*/
+                font-size:21px;/*Sets the font-size*/
+                border-left:11px rgb(250, 122, 53) solid;/*Makes a custom border for the left side*/
+                border-radius:8px 9px 9px 6px;/*Puts custom borders for each border side*/
+                
+            }
+            
+            /*Slider*/
+            .changer{
+                width:100vw;/*Sets the width to 100% of browser width, another responsive css unit*/
+                position:fixed;/*Sets the position to fixed*/
+                top:calc(0% - 100%);/*I guess i didnt need calc XDXD*/
+                left:0;/*Sets the left coordinate*/
+                height:100vh;/*Again responsive units for the height*/
+                background-color:rgb(255, 0, 140);/*Sets the background colour*/
+                color:white;/*Sets the text colour to white*/
+                display:flex;/*Initialises a flexbox*/
+                flex-direction:column;/*Sets the direction for the flex*/
+                z-index:4;
+                justify-content:center;/*Aligns it on one axis*/
+                align-items:center;/*Aligns it on the other :P */
+            }
+            
+            /*Styles for the Information tabs at about*/
+            #info-container{
+                display:flex;/*Sets the flexbox*/
+            }
+            #info-container div{
+                border:1px black solid;/*A border for the divs*/
+                margin:5px;/*Sets a margin*/
+                padding:14px;/*Sets a padding*/
+                text-align:center;/*Aligns the text to the center*/
+                border-radius:12px;/*Sets the border-radius*/
+                cursor:pointer;/*Changes the type of cursor*/
+                width:50%;/*Sets a width as 50% of the available width */
+            }
+            #info-container div:hover{
+                transform:scale(1.01);/*Scales the div on hover*/
+                transition-duration:0.4s;/*Sets the amount of time it takes to do that*/
+            }
+            
+            /*General Flex Class*/
+            .flex{
+                display:flex;/*Sets the flexbox*/
+                justify-content:center;/*Centers it*/
+                flex-wrap:wrap;/*Allows the panes to flow over to another line if there is less space*/
+            }
+            
+            /*for the races and the cyclists*/
+            .race-pane{
+                width:40%;/*Sets the width as 40%*/
+                transition-duration:0.7s;/*This makes the hover out transition smoother*/
+                border:3px black solid;/*Sets a thicker border*/
+                border-radius:6px;/*Sets the roundness level to 6px*/
+                cursor:pointer;/*Changes the type of cursor*/
+                margin:10px;/*Sets a margin*/
+                padding:5px;/*Sets a padiing*/
+                
+            }
+            .race-pane:hover{
+                transform:scale(1.03) translate(0,-10px);/*Scales and moves the pane 10px back on hover*/
+                transition-duration:0.7s;/*Sets a duration for the above transformation*/
+                box-shadow:0px 0px 6px 5px rgb(194, 190, 194);/*Sets a box shadow*/
+            }
+            .race-pane img{
+                width:100%;/*Makes it responsive*/
+            }
+            
+            
+            /*User discussion styles*/
+            .discuss-post{
+                border:3px black solid;/*Creates a big border*/
+                padding:10px;/*Sets a padding*/
+                border-radius:5px;/*Sets a border curve*/
+                text-align:right;/*Aligns text to the right*/
+                cursor:pointer;/*Cursor changing*/
+                display:grid;/*This sets the display to a css GRID(Another responsive design element)*/
+                grid-template-columns:1fr 8fr;/*Defines the amount of columns in the grid*/
+                justify-content:center;/*aligns grid items  to the center*/
+                grid-gap:5px;/*Puts a gap between each grid-item*/
+                align-items:center;/*Another axis of alignment in grid (now the content is completely centered)*/
+            }
+            .discuss-post img{
+                border:2px black solid;/*Another thick border XDXD*/
+                border-radius:50%;/*Makes a circular img*/
+                padding:5px;/*Padding (Very important here)*/
+                width:80%;/*Set the widths*/
+                vertical-align:sub;/*Aligns imgs */
+            }
+            .discuss-post span{
+                
+            }
+            
+            /*Quiz Styling*/
+            #quiz-head{
+                border:3px black solid;/*Another thick border */
+                border-radius:8px;/*A border radius*/
+            }
+            
+            /*For styling the right answer response*/
+            .right{
+                border:2px rgb(27, 112, 10) solid;
+                margin:5px;
+                padding:5px;
+                border-radius:5px;
+                color:rgb(27, 112, 10);
+                background-color:rgb(164, 252, 182);
+                font-weight:bold;/*Makes the text bold*/
+                text-align:center;
+            }
+            
+            /*For styling the wrong answer response*/
+            .wrong{
+                border:2px rgb(240, 17, 17) solid;
+                margin:5px;
+                padding:5px;
+                border-radius:5px;
+                color:rgb(240, 17, 17);
+                background-color:rgba(240, 17, 17,0.4);
+                font-weight:bold;
+                text-align:center;
+            }
+            
+            /*To style the button*/
+            .next{
+                background:transparent;/*Sets a transparent background*/
+                border:2px black solid;
+                border-radius:3px;
+                padding:5px;
+                padding-left:40%;
+                padding-right:40%;
+                margin:5px;
+            }
+        </style>
+        
+        <!--Dark-Mode Class-->
+        <style>
+            #toggle1{
+                cursor:pointer;
+            }
+            .darker{
+                background-color:rgb(74, 73, 74) !IMPORTANT;
+            }
+            .darker .text1{
+                background-color:rgb(74, 73, 74) !IMPORTANT;
+                color:white;
+            }
+            .darker .quote{
+                border:1px white solid;
+            }
+            .darker a{
+                color:rgb(255, 68, 0);
+            }
+            .darker #info-container div{
+                color:black;
+                background-color:rgb(245, 243, 235);
+            }
+            .darker .race-pane{
+                background-color:rgb(245, 243, 237);
+                color:black;
+            }
+            .darker .next{
+                color:white;
+                border:2px white solid;
+            }
+        </style>
+    </head>
+    <body>
+    
+    <nav>
+    
+        <span class="material-icons" onclick="changePage(0);">home</span>
+        <span class="material-icons" onclick="changePage(1);">help</span>
+        <span class="material-icons" onclick="changePage(2);">directions_bike</span>
+        <span class="material-icons" onclick="changePage(3);">copyright</span>
+        <span class="material-icons" onclick="changePage(4);">quiz</span>
+        <span class="material-icons" onclick="changePage(5);">auto_stories</span>
+        <span class="material-icons" id="set" onclick="changePage(6);">settings</span>
+    </nav><!--Navigation Bar-->
+    <img id="imgo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Giro_d%27Italia_2021%2C_Stage_15.jpg/600px-Giro_d%27Italia_2021%2C_Stage_15.jpg" alt=""><!--Hero Image-->
+    
+    <div class="text1 scene">
+    
+        <h1 class="title">Cycling <br><small>--The activity we all love to do</small></h1>
+        Cycling is something we all love to do, don't we ;P<br>
+        This webpage will give some general information about cycling. 
+        <br><br>
+        <div class="quote">“Nothing compares to the simple pleasure of riding a bike” <small>– John F Kennedy</small></div>
+        <br>
+        <p>Now that you got your quote intake, let me take you through a tour of this webpage.</p>
+        This webpage has several sections. <br>
+        <ul>
+            <li>Home Section
+            <li>About/Info Section
+            <li>Some famous cyclists and cycling tours
+            <li>Credits Section
+            <li>Quiz
+        </ul>
+        Feel free to explore and send some feedback on this
+        <br>
+        You can also suggest new features in the T&T of this program
+        <br>
+        <p><b>Personal Note from the author:</b>
+            I am an avid cyclist and love cycling everyday. I would love to know more from you about your cycling experiences !! I feel it is a greatly fun way to stay healthy and fit. 
+        </p>
+        
+    </div><!--Home-->
+    
+    <div class="text1 scene">
+        <h1 class="title">Cycling <br><small>--The activity we all love to do</small></h1>
+        We all love cycling, here is a definition of cycling from <a href="https://en.wikipedia.org/wiki/Cycling">wikipedia</a>-
+        <br><br><br>
+        Cycling, also called bicycling or biking, is the use of bicycles for transport, recreation, exercise or sport. People engaged in cycling are referred to as "cyclists", "bicyclists", or "bikers". Apart from two-wheeled bicycles, "cycling" also includes the riding of unicycles, tricycles, quadricycles, recumbent and similar human-powered vehicles (HPVs).
+        <br><br>
+Bicycles were introduced in the 19th century and now number approximately one billion worldwide. They are the principal means of transportation in many parts of the world.
+         <br><br>
+Cycling is widely regarded as an effective and efficient mode of transportation optimal for short to moderate distances.
+        <br><br>
+Bicycles provide numerous possible benefits in comparison with motor vehicles, including the sustained physical exercise involved in cycling, easier parking, increased maneuverability, and access to roads, bike paths and rural trails. Cycling also offers a reduced consumption of fossil fuels, less air or noise pollution, reduced greenhouse gas emissions, and greatly reduced traffic congestion. These have a lower financial cost for users as well as for society at large (negligible damage to roads, less road area required). By fitting bicycle racks on the front of buses, transit agencies can significantly increase the areas they can serve.
+        <br><br>
+In addition, cycling provides a variety of health benefits. The World Health Organization (WHO) states that cycling can reduce the risk of cancers, heart disease, and diabetes that are prevalent in sedentary lifestyles. Cycling on stationary bikes have also been used as part of rehabilitation for lower limb injuries, particularly after hip surgery. Individuals who cycle regularly have also reported mental health improvements, including less perceived stress and better vitality.
+        <br><br>
+Among the disadvantages of cycling are the requirement of bicycles (excepting tricycles or quadricycles) to be balanced by the rider in order to remain upright, the reduced protection in crashes in comparison to motor vehicles, often longer travel time (except in densely populated areas), vulnerability to weather conditions, difficulty in transporting passengers, and the fact that a basic level of fitness is required for cycling moderate to long distances.
+         <br><br>
+        <div id="info-container">
+            <div>
+                <h2 style="color:rgb(255, 0, 0)">Physical Health Benefits</h2>
+                The physical exercise gained from cycling is generally linked with increased health and well-being. According to the World Health Organization (WHO), physical inactivity is second only to tobacco smoking as a health risk in developed countries, and is associated with 20-30% increased risk of various cancers, heart disease, and diabetes and tens of billions of dollars of healthcare costs. The WHO's 2009 report suggests that increasing physical activity is a public health "best buy", and that cycling is a "highly suitable activity" for this purpose.
+            </div>
+            <div>
+                <h2 style="color:rgb(255, 0, 0)">Mental Health Benefits</h2>
+                The effects of cycling on overall mental health has often been studied. A European study surveying participants from seven cities about self-perceived health based on primary modes of transportation reported favorable results in the bicycle use population. The bicycle use group reported predominantly good self-perceived health, less perceived stress, better mental health, better vitality, and less loneliness. The study attributed these results to possible economic benefits and senses of both independence and identity as a member of a cyclist community. 
+            </div>
+        </div>
+        <br><br>
+        <b>If you want to share your experiences about cycling then go <a href="#" onclick="changePage(5)">here</a>.</b>
+        
+    </div><!--About-->
+    
+    <div class="scene text1">
+    
+        <h1 class="title">Famous Cycling Events</h1>
+        <!--Flex Container-->
+        <div class="flex">
+            <div class="race-pane">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Tour_de_France_logo.svg/270px-Tour_de_France_logo.svg.png"><br><br>
+                <b>One of the most grueling races in the world, the Tour de France is a very prestigious race in which people from all over Europe participate in this competition. </b>
+            </div><!--Tour de France-->
+            <div class="race-pane">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Giro_d%27Italia_-_Logo_2018.svg/330px-Giro_d%27Italia_-_Logo_2018.svg.png"><br><br>
+                <b>Giro d'Italia is an annual race held in Italy; It was initially run by a sports magazine (La Gazzetta dello Sport) !! One of the popular biking races. Not as famous as Tour de France. </b>
+            </div><!--Giro d`Italia-->
+            <div class="race-pane">
+                <br><br>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Vuelta_%28Spain%29_logo.svg/330px-La_Vuelta_%28Spain%29_logo.svg.png"><br><br><br>
+                <b>Vuelta a España is an annual cycling competition held in Spain. It has been inspired by Tour de France and was started in 1935. Its first winner was Gustaf Deloor from Belgium</b>
+            </div><!--La Vuelta-->
+            <div class="race-pane">
+                <br><br>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Union_Cycliste_Internationale_logo.svg/375px-Union_Cycliste_Internationale_logo.svg.png"><br><br><br>
+                <b>The UCI Road World Championships are the annual world championships for bicycle road racing organized by the Union Cycliste Internationale (UCI). The UCI Road World Championships consist of events for road race and individual time trial, and as of 2019 a mixed team relay.</b>
+            </div><!--UCI Road Championships-->
+            <div class="race-pane">
+                <br><br>
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/db/Paris%E2%80%93Roubaix_logo.svg/375px-Paris%E2%80%93Roubaix_logo.svg.png"><br><br><br>
+                <b>Paris–Roubaix is a one-day professional men's bicycle road race in northern France, starting north of Paris and finishing in Roubaix, at the border with Belgium. It is one of cycling's oldest races, and is one of the 'Monuments' or classics of the European calendar.</b>
+            </div><!--Paris Roubaix-->
+        </div>
+        <br><br>
+        
+        
+        <h1 class="title">Famous Cyclists</h1>
+        <!--Flex Container-->
+        <div class="flex">
+            <div class="race-pane">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Koblet_and_Coppi_Giro_d%27Italia_1953.jpg/330px-Koblet_and_Coppi_Giro_d%27Italia_1953.jpg">
+                <b>
+                    <u>Fausto Coppi</u><br><br>
+                    World hour record holder, world champion, five-time Giro d’Italia winner, two-time Tour de France winner — Fausto Coppi was deservedly given the nickname “Campionissimo”, the champion of champions.
+                </b>
+            </div><!--Fausto Coppi-->
+            <div class="race-pane">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Coppi_Bartali_1940.jpg/640px-Coppi_Bartali_1940.jpg">
+                <b>
+                    <u>Gino Bartali</u><br><br>
+                    Coppi’s had a fierce rivalry with Gino Bartali. Their rivalry divided Italy and they would have rather not raced than helped each other while representing their country.
+
+Bartali won the Tour de France twice, in 1938 and 1948 — an astounding 10 years apart. He also won the Giro three times.
+                </b>
+            </div><!--Gino Bartali-->
+            <div class="race-pane">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Anquetil_Poulidor_Bahamontes_1964.jpg/330px-Anquetil_Poulidor_Bahamontes_1964.jpg">
+                <b>
+                    <u>Jacques Anquetil</u><br>
+                   “Monsieur Chrono” was the first rider to win the Tour de France five times, including an impressive four consecutive wins from 1961-1964. Anquetil is one of just six riders to win all three Grand Tours, his wins at the Giro and Vuelta adding to his success at Liège-Bastogne-Liège and five Paris-Nice titles.
+                </b>
+            </div><!--Jacques Anquetil-->
+        </div>
+        <br><br>
+        
+        
+        
+        
+    </div><!--Cycle Section-->
+    
+    <div class="text1 scene">
+        <h1 class="title">Credits</h1>
+        I will provide a roadmap to my creation of this webpage  here but let us look at the credits first:-
+        <ul>
+            <li>Wikipedia, for most of the information
+            <li>Myself for making the page :P
+            <li>All other participants, for providing a truly competitive environment, without you all I would never have made this as this is
+            <li>Khan Academy, for making such an amazing site and providing education to millions for free
+        </ul>
+        
+        <br><br>
+        <h2 class="title">Roadmap</h2>
+        Here is a roadmap of my journey making this:-
+        <ol>
+            <li>I create this webpage
+            <li>I find out a nice idea for a navbar but wonder on how to make it responsive
+            <li>I decide to put a hero image
+            <li>The page is made responsive with <code>@media</code> queries</li>
+            <li>I finish 3 sections
+            <li>I added a lot of comments and indentation
+            <li>I also add the user experience parts by using API
+        </ol>
+    </div><!--Credits-->
+    
+    <div class="text1 scene">
+         <h1 class="title">Quiz <small>(Easy)</small></h1>
+         To all people ready to text your knowledge, you can also post your scores in the T&T and win a chance to be added to the leaderboard<br><br><br>
+         <div id="quiz-head">
+         
+         <form>
+            <div id="part1" class="que">
+                <h2 class="title"><i class="fa fa-quora" style="color:rgb(199, 10, 10);"> </i> Start</h2>
+                
+                
+                <h4 class="title">1. What is the most difficult cycling race in the world ?
+                <select id="que1">
+                    <option value="italia">Giro d`Italia</option>
+                    <option value="france">Tour de France</option>
+                    <option value="espania">La Vuelta</option>
+                    <option value="paris">Paris Roubaix</option>
+                </select>
+                <button type="button" style="cursor:pointer;" onclick="if($('#que1').val()=='france'){scores++;$('.right').fadeIn();}else{$('.wrong').fadeIn();}$('#que1').attr('disabled','disabled')" class="next">Verify <sup style="color:red">*required</sup></button>
+                <button type="button" class="next" onclick="$('#part1').hide();$('#part2').show();$('.wrong').hide();$('.right').hide();">Next</button>
+                </h4>
+                <div class="right">
+                Correct Answer <i class="fa fa-check" aria-hidden="true"></i><i class="fa fa-check" aria-hidden="true"></i></div><!--For the right answer-->
+                <div class="wrong">
+                Oops made a mistake <i class="fa fa-meh-o" aria-hidden="true"></i> <i class="fa fa-meh-o" aria-hidden="true"></i></div><!--For the wrong answer-->
+            </div><!--Question One-->
+            <div id="part2" class="que">
+                <h2 class="title"><i class="fa fa-quora" style="color:rgb(199, 10, 10);"> </i> Question 2</h2>
+                
+                
+                <h4 class="title">2 Who was Fausto Coppi's arch-rival ?
+                <select id="que2">
+                    <option value="italia1">Siroli Florence</option>
+                    <option value="france1">Jacques Anquetil</option>
+                    <option value="espania1">Gino Bartali</option>
+                    <option value="paris1">Benitto Musolini</option>
+                </select>
+                <button type="button" style="cursor:pointer;" onclick="if($('#que2').val()=='espania1'){scores++;$('.right').fadeIn();}else{$('.wrong').fadeIn();}$('#que2').attr('disabled','disabled')" class="next">Verify <sup style="color:red">*required</sup></button>
+                <button type="button" class="next" onclick="$('#part2').hide();$('#part3').show();$('.wrong').hide();$('.right').hide();">Next</button>
+                </h4>
+                <div class="right">
+                Correct Answer <i class="fa fa-check" aria-hidden="true"></i><i class="fa fa-check" aria-hidden="true"></i></div><!--For the right answer-->
+                <div class="wrong">
+                Oops made a mistake <i class="fa fa-meh-o" aria-hidden="true"></i> <i class="fa fa-meh-o" aria-hidden="true"></i></div><!--For the wrong answer-->
+            </div><!--Question Two-->
+            <div id="part3" class="que">
+                <h2 class="title"><i class="fa fa-quora" style="color:rgb(199, 10, 10);"> </i> Question 3</h2>
+                
+                
+                <h4 class="title">3 When was La Vuelta started ?
+                <select id="que3">
+                    <option value="italia2">2000</option>
+                    <option value="france2">1925</option>
+                    <option value="espania2">1965</option>
+                    <option value="paris2">1935</option>
+                </select>
+                <button type="button" style="cursor:pointer;" onclick="if($('#que3').val()=='paris2'){scores++;$('.right').fadeIn();}else{$('.wrong').fadeIn();}$('#que3').attr('disabled','disabled')" class="next">Verify <sup style="color:red">*required</sup></button>
+                <button type="button" class="next" onclick="$('#part3').hide();$('#part4').show();$('.wrong').hide();$('.right').hide();">Next</button>
+                </h4>
+                <div class="right">
+                Correct Answer <i class="fa fa-check" aria-hidden="true"></i><i class="fa fa-check" aria-hidden="true"></i></div><!--For the right answer-->
+                <div class="wrong">
+                Oops made a mistake <i class="fa fa-meh-o" aria-hidden="true"></i> <i class="fa fa-meh-o" aria-hidden="true"></i></div><!--For the wrong answer-->
+            </div><!--Question Three-->
+            <div id="part4" class="que">
+                <h2 class="title"><i class="fa fa-quora" style="color:rgb(199, 10, 10);"> </i> Question 4</h2>
+                
+                
+                <h4 class="title">How did Fausto Coppi die ?
+                <select id="que4">
+                    <option value="italia3">Malaria</option>
+                    <option value="france3">Dengue</option>
+                    <option value="espania3">Tubercolosis</option>
+                    <option value="paris3">Cycling Accident</option>
+                </select>
+                <button type="button" style="cursor:pointer;" onclick="if($('#que4').val()=='italia3'){scores++;$('.right').fadeIn();}else{$('.wrong').fadeIn();}$('#que4').attr('disabled','disabled')" class="next">Verify <sup style="color:red">*required</sup></button>
+                <button type="button" class="next" onclick="$('#part4').hide();$('#part5').show();$('.wrong').hide();$('.right').hide();">Next</button>
+                </h4>
+                <div class="right">
+                Correct Answer <i class="fa fa-check" aria-hidden="true"></i><i class="fa fa-check" aria-hidden="true"></i></div><!--For the right answer-->
+                <div class="wrong">
+                Oops made a mistake <i class="fa fa-meh-o" aria-hidden="true"></i> <i class="fa fa-meh-o" aria-hidden="true"></i></div><!--For the wrong answer-->
+            </div><!--Question Four-->
+            <div id="part5" class="que">
+                <h2 class="title"><i class="fa fa-quora" style="color:rgb(199, 10, 10);"> </i> Last Question</h2>
+                
+                
+                <h4 class="title">When did Gino Bartali die ?
+                <select id="que5">
+                    <option value="italia4">2011</option>
+                    <option value="france4">2000</option>
+                    <option value="espania4">1999</option>
+                    <option value="paris4">1947</option>
+                </select>
+                <button type="button" style="cursor:pointer;" onclick="if($('#que5').val()=='france4'){scores++;$('.right').fadeIn();}else{$('.wrong').fadeIn();}$('#que5').attr('disabled','disabled')" class="next">Verify <sup style="color:red">*required</sup></button>
+                <button type="button" class="next" onclick="alert('Your Score is: ' + scores + '/5')">Check your Score !</button>
+                </h4>
+                <div class="right">
+                Correct Answer <i class="fa fa-check" aria-hidden="true"></i><i class="fa fa-check" aria-hidden="true"></i></div><!--For the right answer-->
+                <div class="wrong">
+                Oops made a mistake <i class="fa fa-meh-o" aria-hidden="true"></i> <i class="fa fa-meh-o" aria-hidden="true"></i></div><!--For the wrong answer-->
+            </div><!--Question Five-->
+         </form>
+         </div><br><br>
+    </div><!--Quiz Section-->
+    
+    <div class="text1 scene">
+        <!--User Experiences about Cycling-->
+        <h1 class="title">User Experiences <small>(Powered by API)</small></h1>
+        <div id="experience">
+
+        </div>
+    </div><!--User Experience Section-->
+    
+    <div class="scene text1">
+        <h1 class="title">Settings <i class="fa fa-cog"></i></h1>
+        <br>
+        <h2>Enable Dark Mode : <i id="toggle1" class="fa fa-toggle-off" onclick="dark()"></i></h2> 
+    </div><!--Settings-->
+    
+    <div class="changer">
+        <h1><u>Cycling</u></h1>
+        <!--Reference : https://iconscout.com/icon/cycling-2199279-->
+        <svg width="401px" height="381px">
+    
+        <!--Face-->
+        <path d="M 195 67 Q 239,111 243 55" fill="white" stroke="black" stroke-width="5px" stroke-linecap="round"></path>
+        <line x1 = "192" y1="67" x2="214" y2="43" stroke="black" stroke-width="5px" stroke-linecap="round"></line>
+        <path d="M 216 43 L 259,43 Q 253,10 213 14 L 214,43" fill="rgba(255, 0, 0,0.7)" stroke="black" stroke-width="5px" stroke-linecap="round"></path>
+        <path fill="white" d="M 223 27 Q 241,27 244 33" stroke="black" stroke-width="4px" stroke-linecap="round"></path>
+        <polygon points="240,45 259,45 273,68" stroke="black" stroke-width="5px" stroke-linecap="round" fill="white"></polygon>
+    
+    
+        <!--Seat-->
+        <rect stroke="black" stroke-width="3px" x="97" y="183" width="40px" height="10px" rx="5" fill="rgba(255,0,0,0.7)"></rect>
+    
+        <!--One Leg Part-->
+        <path d="M165 175 Q 233,182 200 228" stroke-width="5px" fill="rgba(235, 188, 0,0.7)" stroke="black">
+            <animate attributeName="d" values="
+            M165 175 Q 211,182 200 230;
+            M165 175 Q 189,182 200 230;
+            M165 175 Q 205,182 200 230;
+            M165 175 Q 211,182 200 230" dur="1.0s"  repeatCount="indefinite"></animate>
+        </path>
+        
+        
+        
+        <!--Frame of cycle-->
+        <polyline points="64,190 73,209 276,211 201,305 276,211 73,209" stroke="black" stroke-width="5px" stroke-linecap="round"></polyline>
+        <g class="rotate">
+        
+        <circle cx="81" cy="313" r="63" stroke="black" stroke-width="5px" fill="white" transform="translate(245,0)"></circle>
+        <g transform="translate(245,0)">
+            <line x1="76" y1="310" x2="20" y2="291" stroke="black" stroke-width="5px"></line>
+        <line x1="94" y1="304" x2="134" y2="274" stroke="black" stroke-width="5px"></line>
+        <line x1="82" y1="330" x2="87" y2="376" stroke="black" stroke-width="5px"></line>
+        </g>
+        </g>
+        
+        <!--Handlebar-->
+        <path d="M 311,202 L 326,183 L 285,183 L 271,196 L 321,301 L271,196 L285,183 L326,183" stroke="black" stroke-width="5px" stroke-linecap="round"></path>
+        
+        
+        <!--Wheels-->
+        <g class="rotate">
+        <circle cx="81" cy="313" r="63" stroke="black" stroke-width="5px" fill="white"></circle>
+        <line x1="76" y1="310" x2="20" y2="291" stroke="black" stroke-width="5px"></line>
+        <line x1="94" y1="304" x2="134" y2="274" stroke="black" stroke-width="5px"></line>
+        <line x1="82" y1="330" x2="87" y2="376" stroke="black" stroke-width="5px"></line>
+        </g>
+        
+        <!--Peddle gear-->
+        <circle cx="185px" cy="313px" r="16" stroke="black"  stroke-width="5px" fill="white"></circle>
+        
+        <circle cx="185px" cy="313px" r="16" stroke="black"  stroke-width="5px" fill="white" transform="translate(-104,0)"></circle>
+        <circle cx="185px" cy="313px" r="16" stroke="black"  stroke-width="5px" fill="white" transform="translate(142,0)"></circle>
+        <line x1="172" y1="315" x2="99" y2="313" stroke="black" stroke-width="5px" stroke-linecap="round"></line>
+        <line x1="155" y1="211" x2="89" y2="297" stroke="black" stroke-width="5px" stroke-linecap="round"></line>
+        
+        
+        
+        <!--Draws the body-->
+        <path d="M 107 174 Q 112,82 189,64 Q 218,78 221 91 Q 237,122 277 170 C 295,176 284,191 271 178 L 238 146 L 206 108 Q 183,128 176 130 Q 158,143 164 174 L 196 225 Q 205,238  194 245 L 180,307L 168 304L 174 238 Q 144,214 107 174" stroke-width="5px" fill="rgba(235, 188, 0)" stroke="black" stroke-linecap="round">
+        <animate attributeName="d" values="M 107 174 Q 112,82 189,64 Q 218,78 221 91 Q 237,122 277 170 C 295,176 284,191 271 178 L 238 146 L 206 108 Q 183,128 176 130 Q 158,143 164 174 L 196 225 Q 205,238  194 245 L 180,307L 168 304L 174 238 Q 144,214 107 174;
+        M 107 174 Q 112,82 189,64 Q 218,78 221 91 Q 237,122 277 170 C 295,176 284,191 271 178 L 238 146 L 206 108 Q 183,128 176 130 Q 158,143 164 174 L 196 210 Q 205,226  194 233 L 179,295L 168 304L 174 230 Q 144,214 107 174;
+        M 107 174 Q 112,82 189,64 Q 218,78 221 91 Q 237,122 277 170 C 295,176 284,191 271 178 L 238 146 L 206 108 Q 183,128 176 130 Q 158,143 164 174 L 196 225 Q 205,238  194 245 L 193,307L 182 319L 174 238 Q 144,214 107 174;
+        M 107 174 Q 112,82 189,64 Q 218,78 221 91 Q 237,122 277 170 C 295,176 284,191 271 178 L 238 146 L 206 108 Q 183,128 176 130 Q 158,143 164 174 L 196 225 Q 205,238  194 245 L 180,307L 168 304L 174 238 Q 144,214 107 174" dur="1s" repeatCount="indefinite" />
+
+        </path>
+        
+        <line x1="107" y1="174" x2="165" y2="175" stroke="black" stroke-width="5px"></line>
+        
+        <path d="M 168,305 L 166,326 L 195,332 L 180,310" stroke="black" stroke-width="5px" stroke-linecap="round" fill="white">
+            <animate attributeName="d" values="
+            M 168,305 L 166,326 L 195,332 L 180,310;
+            M 168,305 L 172,321 L 205,313 L 183,299;
+            M 184,324 L 186,326 L 218,326 L 194,307;
+            M 168,305 L 166,326 L 195,332 L 180,310" dur="1s" repeatCount="indefinite"></animate>
+        </path>
+        
+         
+        
+        
+    </svg>
+    </div><!--The slider-->
+    
+    <i class="fa fa-ellipsis-v chatbot" onclick="$('#holder1').toggle()"></i><!--The Icon-->
+    
+    <div id="holder1">
+        <div id="chatbot-interface">
+            <div class="grid" id="post">
+                <div><div class="bot-img">Lisa</div></div>
+                <div>
+                    <b>@LISA <span class="verified">BOT</span></b>
+                    <br>
+                    Type <kbd>@help</kbd> to get the list of commands
+                </div><!--First Comment-->
+                
+                
+                
+            </div>
+            <br><br><br>
+            <div style="position:absolute;top:87.1%;background-color:white;">
+                <hr style="width:147%;">
+                <form id="send-form">
+                    <input id="int" placeholder=" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type commands here" style="width:144%;margin:0px;border:1px white solid;">
+                    <br>
+                    
+                </form>
+            </div>
+        </div>
+    </div><!--Chatbot-->
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script><!--JQuery-->
+    
+    <noscript>
+    Oops.... Your Browser has Javascript Disabled</noscript><!--Just in case user has disabled JS-->
+    
+    <!--Change Page Script-->
+    <script>
+        var scenes = document.getElementsByClassName('scene');//Hides all the scene elements
+        function changePage(index){
+            $("#holder1").hide()
+            for (var i = 0; i < scenes.length; i++) {
+                scenes[i].style.display = 'none';//Hides the index scene
+            }
+            $(".changer").animate({
+                "top":"0%"
+            },1500,function(){
+                scenes[index].style.display = 'block';
+            })//Starts the slider and then shows the needful page
+            
+            $(".changer").animate({
+                "top":"-100%"
+            },2000)//Pulls the slider back
+            window.scrollTo(0,0)
+        }
+        changePage(0)
+    </script>
+    
+    
+    <!--User Experience API Script-->
+    <script type>
+        var bannedPeople = [];
+        $.getJSON("https://www.khanacademy.org/api/internal/discussions/ag5zfmtoYW4tYWNhZGVteXJpCxIIVXNlckRhdGEiRnVzZXJfaWRfa2V5X2h0dHA6Ly9pZC5raGFuYWNhZGVteS5vcmcvODg2MDZiZDRjMDJmNDg1YjkwYzg5NjUyYmVkZTE4MTkMCxIIRmVlZGJhY2sYgID9noiGrgsM/replies?format=pretty&limit&callback=?",function(data){
+            
+            for(var i = 0;i<data.length;i++){
+                
+                if(!bannedPeople.includes(data[i].authorKaid)){
+                    var x = `<div class="discuss-post"><span><img src=\"${data[i].authorAvatarSrc}\"></span><span><b>${data[i].authorNickname}</b><br>${data[i].content}</span></div><br>`
+                    $("#experience").append(x)
+                }
+            }
+        })
+    </script>
+    
+    
+    <!--Quiz Script-->
+    <script>
+        var scores = 0;//The score variable
+        $(".que").hide()
+        $(".right").hide()
+        $(".wrong").hide()
+        $("#part1").show()
+        
+        
+    </script>
+    
+    
+    <!--Chatbot Script-->
+    <script>
+        $("#holder1").hide()
+        var commands = [
+                    ["@quiz", "Ah ! Comment understood ! Go <a onclick='changePage(4);$(\"#holder1\").toggle()' href='#'>here.</a>"],
+                    
+                    ["@close", "<img src='sdfsdfjk' alt='Closing Chatbot' onerror='$(\"#holder1\").toggle()'"],
+                    
+                    ["@about", "Ah ! Comment understood ! Go <a onclick='changePage(1);$(\"#holder1\").toggle()' href='#'>here.</a>"],
+                    
+                    ["@explore", "Ah ! Comment understood ! Go <a onclick='changePage(2);$(\"#holder1\").toggle()' href='#'>here.</a>"],
+                    
+                    ["@home", "Ah ! Comment understood ! Go <a onclick='changePage(0);$(\"#holder1\").toggle()' href='#'>here.</a>"],
+                    ["@exp", "Ah ! Comment understood ! Go <a onclick='changePage(5);$(\"#holder1\").toggle()' href='#'>here.</a>"],
+                
+                ];
+        $("#send-form").on("submit",function(e){
+            e.preventDefault()
+            var x = $("#int").val();
+            var counter = 0;
+            if(x=="@help"){
+                var a = '<div><div class="bot-img">You</div></div><div><b>@You</b><br>'+x+'</div><div><div class="bot-img">Lisa</div></div><div><b>@LISA <span class="verified">BOT</span></b><br>Here are the commands:-<ul><li>@explore - Check out some awesome facts</li><li>@close - Close me :(</li><li>@about - Check out the about section</li><li>@home - Check out the home section</li><li>@quiz - Play the quiz</li><li>@exp - Check out the user experiences !</li></div>'
+                $("#post").append(a)
+                return
+            }
+            for(var i = 0;i<commands.length;i++){
+                if(commands[i][0]==x){
+                    var z = '<div><div class="bot-img">You</div></div><div><b>@You</b><br>'+x+'</div><div><div class="bot-img">Lisa</div></div><div><b>@LISA <span class="verified">BOT</span></b><br>'+commands[i][1]+'</div>'
+                    $("#post").append(z)
+                }else{
+                    counter++
+                }
+            }
+            
+            if(counter==commands.length){
+                var z = '<div><div class="bot-img">Lisa</div></div><div><b>@You</b><br>'+x+'</div><div><div class="bot-img">Lisa</div></div><div><b>@LISA <span class="verified">BOT</span></b><br>Sorry, I could not understand your command... Try typing <kbd>@help</kbd> to see all commands</div>'
+                $("#post").append(z)
+            }
+        })
+    </script>
+    
+    <!--Dark Mode Function-->
+    <script>
+        function dark(){
+            if(!$("body").hasClass("darker")){
+                $("body").addClass("darker")
+                $("#toggle1").removeClass("fa-toggle-off")
+                $("#toggle1").addClass("fa-toggle-on")
+            }
+            else{
+                $("body").removeClass("darker")
+                $("#toggle1").addClass("fa-toggle-off")
+                $("#toggle1").removeClass("fa-toggle-on")
+            }
+        }
+    </script>    
+        
+    </body>
+</html>
+<!--Nice !! Thanks for coming till here :P-->
