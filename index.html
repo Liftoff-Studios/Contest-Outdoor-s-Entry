@@ -33,12 +33,12 @@ RoadMap:-
     Unsure <= &
     
     Responsive Design (@)
-    Quiz (*)
+    Quiz (@)
     Cyclist (@)
     Spin a web story (~)
     User Experience (@)
     SVG Animation (@)
-    Dark-Mode (*)
+    Dark-Mode (@)
     Page-Transition (@)
 
 -->
@@ -47,7 +47,7 @@ RoadMap:-
                         About the Author 
 I am a 14 year old trying to make better webpages everyday.
 I am currently working on my coding skills on FCC and KA
-Thank you to all the KA Community by helping me with the feedback !
+Thank you to all the KA Community by helping me with the feedback !!
 
 Here's what I learnt while making an entry for this contest:
 
@@ -62,6 +62,7 @@ Here's what I tried for the first time while making an entry for this contest:
     > Font-Awesome Icon Toolkit
     > Parallax Effect
     > No-Script Tag
+    > Font-Awesome
     
 If you like this program and want to notified when I release a new webpage, sub here => https://www.khanacademy.org/computer-programming/my-subpage/5975724581928960
 
@@ -111,7 +112,6 @@ If you like this program and want to notified when I release a new webpage, sub 
                z-index:0;
                background-color:coral;
                transform:scale(0.7);
-               
            }
            .chatbot:hover{
                box-shadow:0px 0px 4px 1px grey;
@@ -131,6 +131,7 @@ If you like this program and want to notified when I release a new webpage, sub 
                width:265px;
                height:295px;
                box-shadow:0px 0px 10px 3px rgb(186, 182, 186);
+               line-height:normal;
            }
            #holder1{
                margin:-10px;
@@ -209,6 +210,7 @@ If you like this program and want to notified when I release a new webpage, sub 
                 font-family: 'Roboto Condensed', sans-serif;/*Sets the font-family*/
                 margin:0px;/*Sets the margin of body to 0*/
                 padding-left:60px;/*Padding(because nav's position is fixed)*/
+                line-height:25px;
             }
             
             /*Style for scrollbar*/
@@ -249,6 +251,11 @@ If you like this program and want to notified when I release a new webpage, sub 
                 top:0px;/*Sets the top property*/
                 padding-top:0px;/*Sets the padding for the top part*/
                 z-index:5;/*This makes it visible over the transition page (try changing it to -1 to see what i mean :P)*/
+                transition-duration:0.4;
+            }
+            nav .material-icons:hover{
+                transform:scale(1.1);
+                transition-duration:0.4;
             }
             
             /*Settings button alignment*/
@@ -293,7 +300,31 @@ If you like this program and want to notified when I release a new webpage, sub 
                 z-index:-1;/*Again important*/
             }
             
-            
+            @media(max-width:1280px){
+                .changer svg{
+                    width:37% !IMPORTANT;
+                }
+            }
+            @media(max-width:950px){
+                .changer svg{
+                    width:45% !IMPORTANT;
+                }
+            }
+            @media(max-width:850px){
+                .changer svg{
+                    width:50% !IMPORTANT;
+                }
+            }
+            @media(max-width:750px){
+                .changer svg{
+                    width:55% !IMPORTANT;
+                }
+            }
+            @media(max-width:650px){
+                .changer svg{
+                    width:66% !IMPORTANT;
+                }
+            }
             @media (max-width:500px){
                 body{
                     padding-left:0px;
@@ -324,6 +355,7 @@ If you like this program and want to notified when I release a new webpage, sub 
             }
             
             
+            
             /*What was this for XDXD*/
             .down-under{
                 position:relative;/*Makes the position relative*/
@@ -344,7 +376,7 @@ If you like this program and want to notified when I release a new webpage, sub 
             .changer{
                 width:100vw;/*Sets the width to 100% of browser width, another responsive css unit*/
                 position:fixed;/*Sets the position to fixed*/
-                top:calc(0% - 100%);/*I guess i didnt need calc XDXD*/
+                top:calc(0% - 101%);/*I guess i didnt need calc XDXD*/
                 left:0;/*Sets the left coordinate*/
                 height:100vh;/*Again responsive units for the height*/
                 background-color:rgb(255, 0, 140);/*Sets the background colour*/
@@ -354,6 +386,12 @@ If you like this program and want to notified when I release a new webpage, sub 
                 z-index:4;
                 justify-content:center;/*Aligns it on one axis*/
                 align-items:center;/*Aligns it on the other :P */
+                border:1px yellow solid;
+            }
+            .changer svg{
+                width:67%;
+                align-self:center;
+                
             }
             
             /*Styles for the Information tabs at about*/
@@ -384,12 +422,12 @@ If you like this program and want to notified when I release a new webpage, sub 
             /*for the races and the cyclists*/
             .race-pane{
                 width:40%;/*Sets the width as 40%*/
-                transition-duration:0.7s;/*This makes the hover out transition smoother*/
+                transition-duration:0.5s;/*This makes the hover out transition smoother*/
                 border:3px black solid;/*Sets a thicker border*/
                 border-radius:6px;/*Sets the roundness level to 6px*/
                 cursor:pointer;/*Changes the type of cursor*/
                 margin:10px;/*Sets a margin*/
-                padding:5px;/*Sets a padiing*/
+                padding:10px;/*Sets a padiing*/
                 
             }
             .race-pane:hover{
@@ -431,6 +469,9 @@ If you like this program and want to notified when I release a new webpage, sub 
                 border:3px black solid;/*Another thick border */
                 border-radius:8px;/*A border radius*/
             }
+            #quiz-head button{
+                cursor:pointer;
+            }
             
             /*For styling the right answer response*/
             .right{
@@ -467,6 +508,7 @@ If you like this program and want to notified when I release a new webpage, sub 
                 margin:5px;
             }
         </style>
+        
         
         <!--Dark-Mode Class-->
         <style>
@@ -915,7 +957,7 @@ Bartali won the Tour de France twice, in 1938 and 1948 — an astounding 10 year
             })//Starts the slider and then shows the needful page
             
             $(".changer").animate({
-                "top":"-100%"
+                "top":"-101%"
             },2000)//Pulls the slider back
             window.scrollTo(0,0)
         }
@@ -924,7 +966,7 @@ Bartali won the Tour de France twice, in 1938 and 1948 — an astounding 10 year
     
     
     <!--User Experience API Script-->
-    <script type>
+    <script type="application/ecmascript">
         var bannedPeople = [];
         $.getJSON("https://www.khanacademy.org/api/internal/discussions/ag5zfmtoYW4tYWNhZGVteXJpCxIIVXNlckRhdGEiRnVzZXJfaWRfa2V5X2h0dHA6Ly9pZC5raGFuYWNhZGVteS5vcmcvODg2MDZiZDRjMDJmNDg1YjkwYzg5NjUyYmVkZTE4MTkMCxIIRmVlZGJhY2sYgID9noiGrgsM/replies?format=pretty&limit&callback=?",function(data){
             
@@ -991,6 +1033,7 @@ Bartali won the Tour de France twice, in 1938 and 1948 — an astounding 10 year
             }
         })
     </script>
+    
     
     <!--Dark Mode Function-->
     <script>
