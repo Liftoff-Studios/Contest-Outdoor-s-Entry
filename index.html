@@ -24,6 +24,7 @@ Things the Judges should see :)
     5. Check out the races and cyclist panes
     6. Commenting for most CSS and HTML Properties
     7. The chatbot 
+    8. Mouseover the badges for some time
 -->
 <!--
 RoadMap:-
@@ -40,6 +41,8 @@ RoadMap:-
     SVG Animation (@)
     Dark-Mode (@)
     Page-Transition (@)
+    Chatbot (@)
+    User-Login Page (@)
 
 -->
 
@@ -63,6 +66,7 @@ Here's what I tried for the first time while making an entry for this contest:
     > Parallax Effect
     > No-Script Tag
     > Font-Awesome
+    > Badge Info of the KA Internal API
     
 If you like this program and want to notified when I release a new webpage, sub here => https://www.khanacademy.org/computer-programming/my-subpage/5975724581928960
 
@@ -73,7 +77,7 @@ If you like this program and want to notified when I release a new webpage, sub 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <title>Contest Entry Webpage</title>
+        <title>Development 1.10</title>
         
         <!--Font-Awesome-->
        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -92,7 +96,7 @@ If you like this program and want to notified when I release a new webpage, sub 
       
         <!--Acme Font-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
         
         
@@ -268,6 +272,15 @@ If you like this program and want to notified when I release a new webpage, sub 
             .text{
                 padding:10px;/*This makes it look much better :) */
             }
+             #set2{
+                position:absolute;/*This sets the position of the setting icon as absolute*/
+                top:82%;/*Top property of the absolutely positioned element*/
+            }
+            
+            /*Sets some padding for the text*/
+            .text{
+                padding:10px;/*This makes it look much better :) */
+            }
             
             /*To create a parallax effect*/
             .text1{
@@ -338,7 +351,12 @@ If you like this program and want to notified when I release a new webpage, sub 
                 #set{
                     position:absolute;
                     top:7px;
-                    left:85%;
+                    left:89%;
+                }
+                #set2{
+                    position:absolute;
+                    top:7px;
+                    left:79%;
                 }
                 nav .material-icons{
                     font-size:25px;
@@ -541,6 +559,77 @@ If you like this program and want to notified when I release a new webpage, sub 
                 border:2px white solid;
             }
         </style>
+        
+        <!--Login Styles -->    
+        <style>
+            
+            .entry-login{
+                text-align:center;
+            }
+            
+            .dashboard-header{
+                background:url("https://cdn.kastatic.org/images/profile/backgrounds/bg-photon-2.jp");
+                background-color: black; /* Used if the image is unavailable */
+                background-position: center;
+                background-repeat: no-repeat; 
+                background-size: cover;
+                height:100px;
+                padding:20px;
+                margin:0px;
+                color:white;
+            }
+            
+            .user-info{
+                display:grid;
+                width:100%;
+                grid-template-columns:4fr 8fr;
+                justify-content:center;
+                align-items:center;
+               
+                position:relative;
+                color:white;
+                top:-121px;
+            }
+            
+            .user-info span{
+                font-size:20px;
+                margin-right:10px;
+            }
+            
+            #user-avatar{
+                width:75px;
+                border:1px white solid;
+                border-radius:50%;
+                margin-left:10px;
+            }
+            
+            .badge-pane{
+                width:100px;
+                height:100px;
+                border-radius:5px;
+                margin:1px;
+                
+            }
+            
+            #trasform{
+                transform:translate(0,-77px);
+            }
+            
+            #badge-cont{
+                
+                display:flex;
+                border-radius:20px;
+                justify-content:center;
+                padding:0px;
+                flex-wrap:wrap;
+            }
+            
+            #user-stats{
+                border:1px black solid;
+                border-radius:5px;
+                padding:10px;
+            }
+        </style>
     </head>
     <body>
     
@@ -552,6 +641,7 @@ If you like this program and want to notified when I release a new webpage, sub 
         <span class="material-icons" onclick="changePage(3);">copyright</span>
         <span class="material-icons" onclick="changePage(4);">quiz</span>
         <span class="material-icons" onclick="changePage(5);">auto_stories</span>
+        <span class="material-icons" id="set2" onclick="changePage(7);">login</span>
         <span class="material-icons" id="set" onclick="changePage(6);">settings</span>
     </nav><!--Navigation Bar-->
     <img id="imgo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Giro_d%27Italia_2021%2C_Stage_15.jpg/600px-Giro_d%27Italia_2021%2C_Stage_15.jpg" alt=""><!--Hero Image-->
@@ -701,6 +791,9 @@ Bartali won the Tour de France twice, in 1938 and 1948 — an astounding 10 year
             <li>I finish 3 sections
             <li>I added a lot of comments and indentation
             <li>I also add the user experience parts by using API
+            <li>I add a chatbot
+            <li>I finish all sections
+            <li>I make a slider using SVG image animation custom made by me
         </ol>
     </div><!--Credits-->
     
@@ -822,6 +915,37 @@ Bartali won the Tour de France twice, in 1938 and 1948 — an astounding 10 year
         <br>
         <h2>Enable Dark Mode : <i id="toggle1" class="fa fa-toggle-off" onclick="dark()"></i></h2> 
     </div><!--Settings-->
+    
+    <div class="text1 scene">
+        <div class="user-page">
+            <h1 class="title dashboard-header"></h1>
+            <div class="user-info">
+                <img src="" alt="user-avatar" id="user-avatar">
+                <span id="user-name-text">Hello</span>
+            </div><!--User Names etc-->
+            <div id="trasform">
+                <h2 class="title">Badges</h2>
+                <div id="badge-cont"></div>
+                <br><br>
+                <h2 class="title">User Statistics</h2>
+                <div id="user-stats">
+                    Date Joined: <span id="date-joined"></span><br>
+                    Energy Points: <span id="points"></span><br>
+                    KA ID: <span id="kaid"></span>
+                </div>
+            </div>
+        </div><!--When the user logs in, he will be shown this page-->
+        <div class="not-logged-page">
+            <h1 class="title">Dashboard</h1>
+            <u><h5 class="title">Login first to get started</h5></u>
+            
+            <div id="username-entry" class="entry-login">
+                <label for="username1">Username: </label>
+                <input id="username1" type="text" placeholder="Enter Username Here">
+                <button type="button" style="background:transparent;border:1px black solid" title="Submit and log in" onclick="login(document.getElementById('username1').value)">>></button>
+            </div><!--Entry for the Username-->
+        </div><!--If the user has not logged in-->
+    </div><!--The Dashboard-->
     
     <div class="changer">
         <h1><u>Cycling</u></h1>
@@ -1050,6 +1174,55 @@ Bartali won the Tour de France twice, in 1938 and 1948 — an astounding 10 year
             }
         }
     </script>    
+    
+    
+    <!--Login Script Stuffs-->
+    <script type>
+        var logged_in = false;
+        $(".user-page").hide();
+        function login(name){
+            console.log(name)
+            if(!logged_in){
+                $(".not-logged-page").hide()
+                $.getJSON("https://www.khanacademy.org/api/internal/user/profile?username="+name+"&format=pretty&callback=?",function(data){
+            
+            
+            
+            if(data==null){
+                console.log("%cThis user does not exist","font-size:20px;color:red;font-weight:bold;")
+                alert("This user does not exist")
+                return 
+            }//Checks if user exists
+            
+            
+            //Sets the background depending on the user's earlier preference
+            $(".dashboard-header").css("background","url("+data.backgroundSrc+")")
+            
+            //Adds Username, avatar and bio
+            $("#user-avatar").attr("src",data.avatar.imageSrc)
+            $("#user-name-text").html(data.nickname+"<br><small style='font-size:12px;line-height:4px'>@bio: &nbsp;&nbsp;"+data.bio+"</small>")
+            
+            
+            
+            //For the badges
+            for(var i = 0;i<data.publicBadges.length;i++){
+                var x = `<span class="badge-pane" title="${data.publicBadges[i].safeExtendedDescription}" style='text-align:center;'>${data.publicBadges[i].translatedDescription}<br><img src="${data.publicBadges[i].icons.large}" width="90px"></span>`
+                $("#badge-cont").append(x)
+            }
+            
+            
+            //Manages User stats
+            $("#date-joined").text(data.dateJoined)
+            $("#points").text(data.points)
+            $("#kaid").text(data.kaid)
+        })//Gets JSON data
+            
+        
+                logged_in = true;//Changes logged_in to true so that user has to reload the webpage to login with another username    
+            }
+            $(".user-page").show()
+        }//The function
+    </script>
         
     </body>
 </html>
